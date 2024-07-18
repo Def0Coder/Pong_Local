@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class Player_Moves : NetworkBehaviour
 {
-    public float speed = 30;
+    [SerializeField]
+    public float speed = 110;
     public Rigidbody2D rigidbody2d;
 
    

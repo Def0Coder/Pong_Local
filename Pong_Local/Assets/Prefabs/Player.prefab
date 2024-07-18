@@ -156,7 +156,7 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0
-  speed: 70
+  speed: 130
   rigidbody2d: {fileID: 5523208218654281137}
 --- !u!61 &2604882526008604494
 BoxCollider2D:

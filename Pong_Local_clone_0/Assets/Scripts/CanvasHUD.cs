@@ -22,23 +22,23 @@ public class CanvasHUD : MonoBehaviour
 
     private void Start()
     {
-        //Update the canvas text if you have manually changed network managers address from the game object before starting the game scene
+     
         if (NetworkManager.singleton.networkAddress != "localhost") { inputFieldAddress.text = NetworkManager.singleton.networkAddress; }
 
-        //Adds a listener to the main input field and invokes a method when the value changes.
+        
         inputFieldAddress.onValueChanged.AddListener(delegate { ValueChangeCheck(); });
 
-        //Make sure to attach these Buttons in the Inspector
+     
         buttonHost.onClick.AddListener(ButtonHost);
         buttonServer.onClick.AddListener(ButtonServer);
         buttonClient.onClick.AddListener(ButtonClient);
         buttonStop.onClick.AddListener(ButtonStop);
 
-        //This updates the Unity canvas, we have to manually call it every change, unlike legacy OnGUI.
+       
         SetupCanvas();
     }
 
-    // Invoked when the value of the text field changes.
+    
     public void ValueChangeCheck()
     {
         NetworkManager.singleton.networkAddress = inputFieldAddress.text;
@@ -60,6 +60,13 @@ public class CanvasHUD : MonoBehaviour
     {
         NetworkManager.singleton.StartClient();
         SetupCanvas();
+    }
+
+    public void ButtonQuit()
+    {
+
+        Application.Quit();
+
     }
 
     public void ButtonStop()
@@ -85,7 +92,7 @@ public class CanvasHUD : MonoBehaviour
 
     public void SetupCanvas()
     {
-        // Here we will dump majority of the canvas UI that may be changed.
+        
 
         if (!NetworkClient.isConnected && !NetworkServer.active)
         {
@@ -110,7 +117,7 @@ public class CanvasHUD : MonoBehaviour
             if (NetworkServer.active)
             {
                 serverText.text = "Server: active. Transport: " + Transport.active;
-                // Note, older mirror versions use: Transport.activeTransport
+               
             }
             if (NetworkClient.isConnected)
             {

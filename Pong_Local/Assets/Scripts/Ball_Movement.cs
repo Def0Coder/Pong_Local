@@ -5,8 +5,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Ball_Movement : NetworkBehaviour
-{
+{   
     public float speed = 30;
+    public float maxSpeed = 50;
+    public float acceleration = 2;
     public Rigidbody2D rigidbody2d;
     private Manager manager;
 
@@ -42,6 +44,13 @@ public class Ball_Movement : NetworkBehaviour
             float x = col.relativeVelocity.x > 0 ? 1 : -1;
             Vector2 dir = new Vector2(x, y).normalized;
             rigidbody2d.velocity = dir * speed;
+
+            if(speed < maxSpeed)
+            {
+                speed = acceleration + speed;
+            }
+            
+            
         }
 
         if (col.gameObject.tag == "WL")
@@ -54,14 +63,7 @@ public class Ball_Movement : NetworkBehaviour
             manager.UpdateScore(1); // Player 1 scores
             NetworkServer.Destroy(gameObject);
         }
-        //else if (col.gameObject.tag == "Player1Goal" "Player2Goal")
-        //{
-        //    if (manager != null)
-        //    {
-        //        manager.UpdateScore(col.transform.position.x > 0 ? 1 : 2);
-        //    }
-        //    NetworkServer.Destroy(gameObject);
-        //}
+     
     }
 }
 
