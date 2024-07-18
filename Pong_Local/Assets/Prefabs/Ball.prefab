@@ -228,5 +228,5 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0
-  speed: 5
+  speed: 10
   rigidbody2d: {fileID: 1861344617524049427}
